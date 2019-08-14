@@ -8,26 +8,24 @@ namespace Algorithms
 {
     class Hand
     {
-        private List<int> cards = new List<int>();
+        private List<Card> cards = new List<Card>();
         private int number;
         private string handName;
 
-        public List<int> Cards { get => cards; set => cards = value; }
+        public List<Card> Cards { get => cards; set => cards = value; }
         public int Number { get => number; set => number = value; }
         public string HandName { get => handName; set => handName = value; }
+
+
         
-        public Hand(string handName, Random rand)
+        public Hand(string handName, int numberOfCards, Deck deck, Random rand)
         {
-            int min = 2;
-            int max = 15;
-            this.Number = 7;
+            this.Number = numberOfCards;
             this.HandName = handName;
-            
-            for (int i=0; i < this.Number; i++)
-            {              
-                this.Cards.Add(rand.Next(min, max));
-            }
-         
+            for(int i=0; i < Number; i++)
+            {
+                cards.Add(deck.DrawCard(rand));
+            }            
         }       
     }
 }

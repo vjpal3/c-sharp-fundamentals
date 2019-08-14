@@ -13,18 +13,12 @@ namespace Algorithms
             //Console.WriteLine(CardPicker.ProcessRound(new Card("heart", 10), "low"));
 
             //create Random object once to get different random values.
-            Random rand = new Random();
-            //Console.WriteLine(BestHand.findBestHand(new Hand("Player1", rand), new Hand("Player2", rand)));
-
+            Random rand = new Random();            
             var deck = new Deck();
             deck.shuffle(rand);
-            Card card1 = deck.drawCard(rand);
-            Console.WriteLine(card1.Suit + " # " + card1.Value);
-
-            Card card2 = deck.drawCard(rand);
-            Console.WriteLine(card2.Suit + " # " + card2.Value);
-
+            var result = BestHand.FindBestHand(new Hand("Player1", 5, deck, rand), new Hand("Player2", 5, deck, rand));
+            Console.WriteLine(result);
+            Console.WriteLine();
         }
-
     }
 }

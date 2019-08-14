@@ -33,7 +33,8 @@ namespace Algorithms
             shuffledCards = cards.OrderBy(card => rand.Next());         
         }
 
-        public Card drawCard(Random rand)
+        //Draw a card and remove it from the deck
+        public Card DrawCard(Random rand)
         {
             int min = 2;
             int max = 15;
@@ -48,9 +49,9 @@ namespace Algorithms
 
             shuffledCards = remainingDeck; // Assign the deck of remaining cards to the shuffledCards.
 
-            //foreach (Card card in shuffledCards)           
+            //foreach (Card card in shuffledCards)
             //    Console.WriteLine(card.Value + " ** " + card.Suit);
-            
+
             return nextCard;
         }
     }
