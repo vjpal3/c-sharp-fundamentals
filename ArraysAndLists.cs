@@ -104,10 +104,8 @@ namespace CsharpFundamentals
 
                 numbers.Add(Convert.ToInt32(input));
             }
-
-            List<int> uniqueList = FindUniques(numbers);
             Console.WriteLine("Unique Numbers: ");
-            foreach (var number in uniqueList)
+            foreach (var number in FindUniques(numbers))
             {
                 Console.Write(number + " ");
             }
