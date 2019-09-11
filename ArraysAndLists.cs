@@ -47,13 +47,19 @@ namespace CsharpFundamentals
             //var name = input.ToCharArray();
             //Array.Reverse(name);
 
+            var reversed = Reversed(input);
+            
+            Console.WriteLine("Reversed Name: " + reversed);
+        }
+
+        public static string Reversed(string input)
+        {
             var name = new char[input.Length];
-            for(var i=0; i < input.Length; i++)
+            for (var i = 0; i < input.Length; i++)
             {
                 name[input.Length - 1 - i] = input[i];
             }
-            var reversed = new String(name);
-            Console.WriteLine("Reversed Name: " + reversed);
+            return new String(name);
         }
 
         //3 - Write a program and ask the user to enter 5 numbers.If a number has been previously entered, display an error message and ask the user to re-try. Once the user successfully enters 5 unique numbers, sort them and display the result on the console.
@@ -89,27 +95,36 @@ namespace CsharpFundamentals
         public void Exercise4()
         {
             var numbers = new List<int>();
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Enter a number or type 'Quit' to quit");
                 var input = Console.ReadLine();
                 if (input.ToLower() == "quit")
                     break;
-               
+
                 numbers.Add(Convert.ToInt32(input));
             }
 
+            List<int> uniqueList = FindUniques(numbers);
+            Console.WriteLine("Unique Numbers: ");
+            foreach (var number in uniqueList)
+            {
+                Console.Write(number + " ");
+            }
+            Console.WriteLine();
+        }
+
+        private static List<int> FindUniques(List<int> numbers)
+        {
             var uniqueList = new List<int>();
-            Console.WriteLine("You entered following unique numbers: ");
             foreach (var number in numbers)
             {
                 if (!uniqueList.Contains(number))
                 {
                     uniqueList.Add(number);
-                    Console.Write(number + " ");
                 }
             }
-            Console.WriteLine();
+            return uniqueList;
         }
 
         //5- Write a program and ask the user to supply a list of comma separated numbers(e.g 5, 1, 9, 2, 10). If the list is empty or includes less than 5 numbers, display "Invalid List" and ask the user to re-try; otherwise, display the 3 smallest numbers in the list.
@@ -127,8 +142,7 @@ namespace CsharpFundamentals
                     if (elements.Length >= 5)
                     {
                         break;
-                    }
-                        
+                    }                       
                 }
                 Console.WriteLine("Invalid List");              
             }
