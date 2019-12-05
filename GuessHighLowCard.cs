@@ -10,16 +10,21 @@ namespace Algorithms
     {
         public enum Guesses { low, high }
 
-        public static string ProcessRound(Deck deck, string strGuess, Random rand)
+        public static string ProcessRound(Deck deck, Random rand)
         {
-            var guess = (int)(Guesses)Enum.Parse(typeof(Guesses), strGuess.ToLower());
+            //var guess = (int)(Guesses)Enum.Parse(typeof(Guesses), strGuess.ToLower());
             var currentCard = deck.DrawCard(rand);
-            var nextCard = deck.DrawCard(rand);
+           
 
             Console.WriteLine("Current Card: {0}, {1}", currentCard.Value, currentCard.Suit);
+            Console.WriteLine("Guess Next Card - Type high or low: ");
+            var strGuess = Console.ReadLine();
+            var guess = (int)(Guesses)Enum.Parse(typeof(Guesses), strGuess.ToLower());
+
+            var nextCard = deck.DrawCard(rand);
             Console.WriteLine("Next Card: {0}, {1}", nextCard.Value, nextCard.Suit);
-            Console.WriteLine("Guess: " + strGuess);
-            Console.WriteLine();
+            //Console.WriteLine("Guess: " + strGuess);
+            //Console.WriteLine();
              
             if (currentCard.Value == nextCard.Value)
                 return "Draw";
